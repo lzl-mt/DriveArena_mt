@@ -107,6 +107,8 @@ def main(cfg: DictConfig):
 
     # start
     logging.debug("start!")
+    import pdb
+    pdb.set_trace()
     runner.run()
 
 

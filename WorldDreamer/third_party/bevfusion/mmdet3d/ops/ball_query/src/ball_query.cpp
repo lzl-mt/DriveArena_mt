@@ -1,15 +1,16 @@
 // Modified from
 // https://github.com/sshaoshuai/Pointnet2.PyTorch/tree/master/pointnet2/src/ball_query.cpp
 
-#include <THC/THC.h>
+//#include <THC/THC.h>
 #include <cuda.h>
 #include <cuda_runtime_api.h>
 #include <torch/extension.h>
 #include <torch/serialize/tensor.h>
 
 #include <vector>
+#include <ATen/cuda/CUDAContext.h>
 
-extern THCState *state;
+//extern THCState *state;
 
 #define CHECK_CUDA(x) \
   TORCH_CHECK(x.type().is_cuda(), #x, " must be a CUDAtensor ")

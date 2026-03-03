@@ -1,5 +1,5 @@
 dataset_type_nuscenes: NuScenesDataset
-dataset_root_nuscenes: /cpfs01/shared/public/ADLab/datasets/nuscenes
+dataset_root_nuscenes: /jfs/zhenlin.liang/auto_driver/data/nuscenes
 dataset_process_root_nuscenes: data/nuscenes_mmdet3d-t-keyframes/
 dataset_cache_file_tag_nuscenes: null
 dataset_cache_dirname_nuscenes: null

@@ -55,6 +55,8 @@ def get_openai_description(image_path):
         "max_tokens": 100,
     }
     max_retries = 10
+    import pdb
+    pdb.set_trace()
     for attempt in range(max_retries):
         try:
             response = requests.post(
@@ -77,14 +79,19 @@ def get_openai_description(image_path):
 
 def process_scene(scene, token_data_dict, data_infos, get_openai_description):
     idx = int(len(scene) / 2)
-    image_path = data_infos[token_data_dict[scene[idx]]]["cams"]["CAM_F0"]["data_path"]
+    image_path = data_infos[token_data_dict[scene[idx]]]["cams"]["CAM_FRONT"]["data_path"]
     description = get_openai_description(image_path)
     print(description)
     return scene, description
 
 
+#file = open(
+#    "data/nuplan/nuplan_infos_val.pkl",
+#    "rb",
+#)
+
 file = open(
-    "data/nuplan/nuplan_infos_val.pkl",
+    "data/nuscenes_mmdet3d-12Hz/nuscenes_interp_12Hz_infos_train.pkl",
     "rb",
 )
 datas = pickle.load(file)
@@ -110,7 +117,7 @@ for i, (scene, description) in enumerate(results):
         data_infos[token_data_dict[token]]["description"] = description
 
 with open(
-    "data/nuplan/nuplan_infos_val_with_note.pkl",
+    "data/nuscenes_mmdet3d-12Hz/nuscenes_interp_12Hz_infos_train_with_note.pkl",
     "wb",
 ) as f:
     data_copy = copy.deepcopy(datas)
